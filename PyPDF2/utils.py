@@ -33,6 +33,7 @@ __author_email__ = "biziqe@mathieu.fenniak.net"
 
 
 import sys
+import os
 
 try:
     import __builtin__ as builtins
@@ -66,7 +67,8 @@ def isBytes(b):
 
 #custom implementation of warnings.formatwarning
 def formatWarning(message, category, filename, lineno, line=None):
-    file = filename.replace("/", "\\").rsplit("\\", 1)[1] # find the file name
+    file = os.path.basename(filename)
+    # file = filename.replace("/", "\\").rsplit("\\", 1)[1] # find the file name
     return "%s: %s [%s:%s]\n" % (category.__name__, message, file, lineno)
 
 
